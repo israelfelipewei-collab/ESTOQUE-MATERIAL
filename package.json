@@ -1,0 +1,15 @@
+{
+  "name": "apmi-estoque-escritorio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Sistema de controle de estoque de material de escritório da APMI (Associação de Proteção à Maternidade e à Infância), com banco de dados no Supabase.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.11"
+  }
+}

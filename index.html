@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APMI · Estoque de Material de Escritório</title>
+<link rel="icon" href="/assets/img/logo.png" type="image/png">
+
+<!-- Fontes -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Bibliotecas de terceiros (relatórios e gráficos) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+
+<!-- Folha de estilos própria (pasta public/, servida como está) -->
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<!-- ============ LOGIN ============ -->
+<div id="login-screen">
+  <div class="login-split">
+    <div class="login-panel-left">
+      <div class="login-brand-row">
+        <img src="/assets/img/logo.png" alt="APMI">
+        <div>
+          <div class="lb-name">APMI</div>
+          <div class="lb-tag">Estoque de Material de Escritório</div>
+        </div>
+      </div>
+      <div class="headline">
+        <h2>Controle de Material de Escritório</h2>
+        <p>Sistema interno da APMI para cadastro de produtos, registro de entradas e saídas, histórico de movimentações e relatórios do estoque de escritório.</p>
+      </div>
+      <div class="lp-footer">Associação de Proteção à Maternidade e à Infância</div>
+    </div>
+    <div class="login-panel-right">
+      <h1>Entrar no sistema</h1>
+      <p class="sub">Use seu usuário institucional para acessar.</p>
+      <div class="login-error" id="login-error"></div>
+      <form id="login-form">
+        <div class="field">
+          <label>Usuário</label>
+          <input type="text" id="login-user" autocomplete="username" placeholder="ex: admin">
+        </div>
+        <div class="field">
+          <label>Senha</label>
+          <input type="password" id="login-pass" autocomplete="current-password" placeholder="••••••••">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+      </form>
+      <p class="login-hint">Acesso de demonstração — usuário <strong>admin</strong> / senha <strong>apmi123</strong>.<br>Os dados deste sistema ficam armazenados no seu projeto Supabase.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============ APP ============ -->
+<div id="app-screen">
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <img src="/assets/img/logo.png" alt="APMI">
+      <div>
+        <div class="name">APMI</div>
+        <div class="tag">MATERIAL DE ESCRITÓRIO</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav" id="sidebar-nav"></nav>
+    <div class="sidebar-footer">
+      <div class="user-chip">
+        <div class="user-avatar" id="user-avatar">A</div>
+        <div>
+          <div class="u-name" id="user-name-lbl">—</div>
+          <div class="u-role" id="user-role-lbl">—</div>
+        </div>
+      </div>
+      <button class="logout-btn" id="logout-btn">Sair</button>
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <button class="hamburger" id="hamburger-btn" aria-label="Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <div>
+          <h2 id="page-title">Painel</h2>
+          <div class="desc" id="page-desc">Visão geral do estoque de material de escritório</div>
+        </div>
+      </div>
+      <div class="topbar-actions" id="topbar-actions"></div>
+    </div>
+    <div class="view-content" id="view-content"></div>
+  </div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal" id="modal-box"></div>
+</div>
+
+<div class="toast-container" id="toast-container"></div>
+
+<!-- Ponto de entrada da aplicação (ES module, processado/empacotado pelo Vite) -->
+<script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

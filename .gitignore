@@ -1,0 +1,13 @@
+# Credenciais — nunca versionar
+.env
+.env.local
+.env.example
+
+# Dependências e build
+node_modules/
+dist/
+
+# Sistema operacional / editor
+.DS_Store
+Thumbs.db
+*.log
