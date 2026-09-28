@@ -1,4 +1,10 @@
-
+-- =========================================================
+-- APMI · Estoque de Material de Escritório — Schema Supabase
+-- Execute este script no SQL Editor do seu projeto Supabase.
+--
+-- Usa tabelas com sufixo "_escritorio" para conviver no mesmo
+-- projeto Supabase do sistema de estoque de limpeza, sem conflito.
+-- =========================================================
 
 create extension if not exists pgcrypto;
 
