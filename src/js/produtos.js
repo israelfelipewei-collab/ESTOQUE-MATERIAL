@@ -98,7 +98,7 @@ export function openProductModal(id){
       <button class="modal-close" id="m-close">${icon('shield','width:18px;height:18px;')}</button>
     </div>
     <div class="modal-body">
-      <div class="field"><label>Nome do produto</label><input type="text" id="pf-nome" value="${editing?escapeHtml(p.nome):''}" placeholder="ex: Detergente Neutro 5L"></div>
+      <div class="field"><label>Nome do produto</label><input type="text" id="pf-nome" value="${editing?escapeHtml(p.nome):''}" placeholder="ex: Papel A4 (resma 500 folhas)"></div>
       <div class="form-row">
         <div class="field"><label>Categoria</label>
           <select id="pf-categoria">${CATEGORIAS.map(c=>`<option value="${c}" ${editing&&p.categoria===c?'selected':''}>${c}</option>`).join('')}</select>
@@ -177,13 +177,16 @@ function confirmDeleteProduct(id){
     confirmLabel:'Excluir produto',
     onConfirm: async (btn) => {
       await withSaving(btn, async () => {
-        await sbDelete('produtos_escritorio', id);
-        state.products = state.products.filter(x=>x.id!==id);
+        // Registra o movimento de exclusão ANTES de apagar o produto: se
+        // inserirmos depois, a referência ao produto (já apagado) quebra
+        // a chave estrangeira no Supabase e a operação falha.
         await insertMovement({
-          tipo:'exclusao', produtoId:p.id, produtoNome:p.nome, quantidade:null,
+          tipo:'exclusao', produtoId:null, produtoNome:p.nome, quantidade:null,
           responsavel:currentUser().nome, qtdAnterior:p.quantidade, qtdPosterior:0,
           descricao:'Produto excluído do cadastro.'
         });
+        await sbDelete('produtos_escritorio', id);
+        state.products = state.products.filter(x=>x.id!==id);
         toast('Produto excluído.', 'success');
         closeModal();
         renderProdutos();
