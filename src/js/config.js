@@ -24,7 +24,7 @@ export const LOGO_PATH = '/assets/img/logo.png';
 /* ---------------- Listas de apoio para formulários ---------------- */
 export const CATEGORIAS = ['Papelaria','Informática e Eletrônicos','Cartuchos e Toners','Mobiliário de Escritório','Material de Escritório Geral','Outros'];
 export const UNIDADES = ['un','cx','pct','resma','par','kit','rolo'];
-export const SETORES = ['Berçário','Cozinha','Lavanderia','Enfermaria','Administração','Recepção','Área Externa','Outro'];
+export const SETORES = ['Cer','Escola', 'Administrção','Recepção'];
 export const ROLES = ['Administrador','Responsável pelo Estoque','Usuário para Consulta'];
 
 /* ---------------- Estado global da aplicação ---------------- */

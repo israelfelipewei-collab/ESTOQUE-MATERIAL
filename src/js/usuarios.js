@@ -1,7 +1,3 @@
-/* ============================================================
-   APMI · Controle de Estoque — src/js/usuarios.js
-   Gestão de usuários e perfis de acesso (somente Administrador).
-   ============================================================ */
 import { state, ui, ROLES, icon } from './config.js';
 import { escapeHtml, toast } from './utils.js';
 import { openModal, closeModal, openConfirmModal } from './ui-helpers.js';

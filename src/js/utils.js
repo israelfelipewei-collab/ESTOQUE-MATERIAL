@@ -1,7 +1,3 @@
-/* ============================================================
-   APMI · Controle de Estoque — src/js/utils.js
-   Funções utilitárias de formatação e apoio geral.
-   ============================================================ */
 import { state } from './config.js';
 import { icon } from './config.js';
 
